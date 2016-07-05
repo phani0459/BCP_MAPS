@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bcp.bcp">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <permission
+        android:name="com.bcp.bcp.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.bcp.bcp.permission.C2D_MESSAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/licon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".recyclerview.ViewLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".recyclerview.FenceTimingActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBTB-aP-lgh7jHMrxmExeUf_U7qtHp3kFI" />
+
+        <!-- [START gcm_receiver] -->
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="gcm.play.android.samples.com.gcmquickstart" />
+            </intent-filter>
+        </receiver>
+        <!-- [END gcm_receiver] -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <!-- [START gcm_listener] -->
+        <service
+            android:name=".gcm.MyGcmListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <!-- [END gcm_listener] -->
+
+        <receiver
+            android:name=".beacon.BeaconstacReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.mobstac.beaconstac.intent.action.RANGED_BEACON" />
+                <action android:name="com.mobstac.beaconstac.intent.action.CAMPED_BEACON" />
+                <action android:name="com.mobstac.beaconstac.intent.action.EXITED_BEACON" />
+                <action android:name="com.mobstac.beaconstac.intent.action.TRIGGERED_RULE" />
+                <action android:name="com.mobstac.beaconstac.intent.action.ENTERED_REGION" />
+                <action android:name="com.mobstac.beaconstac.intent.action.EXITED_REGION" />
+                <action android:name="com.mobstac.beaconstac.intent.action.ENTERED_GEOFENCE" />
+                <action android:name="com.mobstac.beaconstac.intent.action.EXITED_GEOFENCE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- [START instanceId_listener] -->
+        <service
+            android:name=".gcm.MyInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+        <!-- [END instanceId_listener] -->
+        <service
+            android:name=".gcm.RegistrationIntentService"
+            android:exported="false" />
+        <service android:name=".geofencing.GeofenceTransitionsIntentService" />
+        <service android:name=".MyLocationService" />
+
+        <receiver android:name="com.mobstac.beaconstac.core.DismissNotification">
+            <intent-filter>
+                <action android:name="com.mobstac.beaconstac.core.DismissNotification" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.mobstac.beaconstac.core.MSBLEService" />
+        <service android:name="com.mobstac.beaconstac.core.BTToggleService" />
+        <service android:name="com.mobstac.beaconstac.core.MSGeofenceTransitionIntentService" />
+
+        <provider
+            android:name=".beacon.BeaconContentProvider"
+            android:authorities="@string/provider"
+            android:enabled="true"
+            android:exported="false"
+            android:grantUriPermissions="true" />
+
+        <service
+            android:name=".beacon.ScanBeacons"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+
+</manifest>

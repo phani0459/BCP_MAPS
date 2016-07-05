@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:src="@drawable/loc" />
+
+    <ImageView
+        android:id="@+id/locatelabel"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/locate" />
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/carddb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/transparent"
+        app:cardBackgroundColor="@color/colorCardview"
+        card_view:cardCornerRadius="16dp">
+
+        <LinearLayout
+            android:id="@+id/rlayoutfdetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textaddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:text="--"
+                    android:textColor="@color/colorYellow" />
+
+                <TextView
+                    android:id="@+id/texttime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingBottom="8dp"
+                    android:text="--"
+                    android:textColor="@color/colorWhite" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textaddress2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="@color/colorBlue" />
+
+                <TextView
+                    android:id="@+id/texttime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="--"
+                    android:textColor="@color/colorWhite" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/nodata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="No Location Data"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/colorBlue"
+            android:visibility="gone" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/Switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:button="@null"
+        android:checked="false"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:text="Enable Tracking"
+        android:textColor="@color/colorWhite"
+        android:textOff=""
+        android:textOn="" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="24dp"
+        android:drawableLeft="@drawable/calendar"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:text="Refresh Time Interval : "
+        android:textColor="@color/colorWhite" />
+
+</LinearLayout>
